@@ -20,11 +20,6 @@ const fetchCat = async (text) => {
 };
 
 
-
-
-
-
-
 const Form = ({ updateMainCat }) => {
   const includesHangul = (text) => /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/i.test(text);
   const [value, setValue] = React.useState('');
@@ -104,10 +99,8 @@ const MainCard = ({ img, onHeartClick, alreadyFavorite }) => {
   const heartIcon = alreadyFavorite ? "💖" : "🤍"
   return (
     <div className="main-card">
-      <img
-        src={img} alt="고양이" width="400" />
-      <button onClick={onHeartClick}
-      >{heartIcon}</button>
+      <img src={img} alt="고양이" width="400" />
+      <button onClick={onHeartClick}>{heartIcon}</button>
     </div>
   );
 }
@@ -133,13 +126,13 @@ const App = () => {
   const alreadyFavorite = favorites.includes(mainCat);
 
   async function setInitialCat() {
-  const newCat = await fetchCat("First cat");
-  console.log(newCat);
-   setMainCat(newCat);
+    const newCat = await fetchCat("First cat");
+    console.log(newCat);
+    setMainCat(newCat);
   }
 
   React.useEffect(()=> {
-  setInitialCat();
+    setInitialCat();
   }, []);
 
   
